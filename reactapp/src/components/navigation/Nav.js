@@ -4,7 +4,7 @@ import StudentForm from "../StudentForm";
 import Calcultor from "../Calculator";
 import TransferEg from "../TransferEg";
 import { useState } from "react";
-import GoLogin from "../login/GoLogin";
+
 const Nav = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
@@ -18,12 +18,14 @@ const Nav = () => {
         </div>
       )}
       <Routes>
-        <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
-        {isAuthenticated && (<> <Route path="/studentform" element={<StudentForm />} />
-            <Route path="/calculator" element={<Calcultor />} />
-            <Route path="/transfer" element={<TransferEg />} /></>
-        )}
-        <Route path="*" element={<GoLogin/>}/>
+        <Route
+          path="/"
+          element={<Login setIsAuthenticated={setIsAuthenticated} />}
+        />
+
+        <Route path="/studentform" element={<StudentForm />} />
+        <Route path="/calculator" element={<Calcultor />} />
+        <Route path="/transfer" element={<TransferEg />} />
       </Routes>
     </div>
   );

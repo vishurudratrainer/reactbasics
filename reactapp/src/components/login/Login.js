@@ -50,12 +50,12 @@ const Login = (props) => {
     <div>
       <form onSubmit={doLogin}>
         <label>
-          Enter username <input name="username" onChange={capture} />
+          Enter username <input name="username" onChange={capture} minLength={2}/>
         </label>
         <br />
         <label>
           Enter password{" "}
-          <input type="password" name="password" onChange={capture} />
+          <input type="password" name="password" onChange={capture} minLength={2} />
         </label>
         <br />
         <button disabled={!formData.touch}>Login</button>
