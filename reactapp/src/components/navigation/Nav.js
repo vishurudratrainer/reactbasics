@@ -5,6 +5,7 @@ import Calcultor from "../Calculator";
 import TransferEg from "../TransferEg";
 import { useState } from "react";
 import PrivateComponent from "../PrivateComponent";
+import Select from "../Select";
 
 const Nav = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -16,6 +17,7 @@ const Nav = () => {
           <Link to={"/studentform"}>StudentForm</Link> <br />
           <Link to={"calculator"}>Calcultor</Link> <br />
           <Link to={"transfer"}>Transfer</Link> <br />
+          <Link to={"propertydrill"}>Property drill</Link> <br />
         </div>
       )}
       <Routes>
@@ -27,6 +29,7 @@ const Nav = () => {
           <Route path="/studentform" element={<StudentForm />} />
           <Route path="/calculator" element={<Calcultor />} />
           <Route path="/transfer" element={<TransferEg />} />
+          <Route path="/propertydrill" element={<Select />} />
         </Route>
       </Routes>
     </div>
