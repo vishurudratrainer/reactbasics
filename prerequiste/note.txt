@@ -1,0 +1,6 @@
+#Pure functions
+
+1) They take parameters
+2) They return results
+3) Within no side effect ( passes parameters should not be modified directly)
+
