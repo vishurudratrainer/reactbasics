@@ -22,13 +22,20 @@ const Login = (props) => {
     }
   };
 
+  const checkField = (data) => {
+    let length = data.trim().length;
+    return length > 0;
+  };
+
   const capture = (e) => {
     let propertyName = e.target.name;
     let propertyValue = e.target.value;
     setFormData({
       ...formData,
       [propertyName]: propertyValue,
-      touch: formData.username.length > 0 && formData.password.length > 0,
+      touch:
+        checkField(formData.username.length) &&
+        checkField(formData.password.length),
     });
   };
 
