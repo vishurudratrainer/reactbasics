@@ -1,10 +1,21 @@
-import './App.css';
-import Header from './components/child/Header';
-
+import "./App.css";
+import Table1 from "./components/Table1";
 function App() {
   return (
     <div className="App">
-     <Header/>
+      <Table1
+        tableData={[
+          { id: 1, name: "Vishwa" },
+          { id: 2, name: "Shiv" },
+        ]}
+      />
+
+      <Table1
+        tableData={[
+          { id: 1, name: "Raj" },
+          { id: 2, name: "Raju" },
+        ]}
+      />
     </div>
   );
 }
