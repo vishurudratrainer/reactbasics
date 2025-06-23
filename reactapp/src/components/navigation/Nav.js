@@ -6,6 +6,7 @@ import TransferEg from "../TransferEg";
 import { useState } from "react";
 import PrivateComponent from "../PrivateComponent";
 import Select from "../Select";
+import SelectWithContext from "../contextusage/SelectWithContext";
 
 const Nav = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -18,6 +19,7 @@ const Nav = () => {
           <Link to={"calculator"}>Calcultor</Link> <br />
           <Link to={"transfer"}>Transfer</Link> <br />
           <Link to={"propertydrill"}>Property drill</Link> <br />
+          <Link to={"withcontext"}>Select With context</Link> <br />
         </div>
       )}
       <Routes>
@@ -30,6 +32,7 @@ const Nav = () => {
           <Route path="/calculator" element={<Calcultor />} />
           <Route path="/transfer" element={<TransferEg />} />
           <Route path="/propertydrill" element={<Select />} />
+          <Route path="/withcontext" element={<SelectWithContext />} />
         </Route>
       </Routes>
     </div>
