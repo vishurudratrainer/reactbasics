@@ -1,20 +1,27 @@
 import { Routes, Route, Link } from "react-router-dom";
-import Counter from "../Counter";
+import Login from "../login/Login";
 import StudentForm from "../StudentForm";
 import Calcultor from "../Calculator";
 import TransferEg from "../TransferEg";
+import { useState } from "react";
 const Nav = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <div>
-      <Link to={"/"}>Counter</Link> <br />
-      <Link to={"/studentform"}>StudentForm</Link> <br />
-      <Link to={"calculator"}>Calcultor</Link> <br />
-      <Link to={"transfer"}>Transfer</Link> <br />
+      {isAuthenticated && (
+        <div>
+          <Link to={"/"}>Login</Link> <br />
+          <Link to={"/studentform"}>StudentForm</Link> <br />
+          <Link to={"calculator"}>Calcultor</Link> <br />
+          <Link to={"transfer"}>Transfer</Link> <br />
+        </div>
+      )}
       <Routes>
-        <Route path="/" element={<Counter />} />
-        <Route path="/studentform" element={<StudentForm />} />
-        <Route path="/calculator" element={<Calcultor />} />
-        <Route path="/transfer" element={<TransferEg />} />
+        <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        {isAuthenticated && (<> <Route path="/studentform" element={<StudentForm />} />
+            <Route path="/calculator" element={<Calcultor />} />
+            <Route path="/transfer" element={<TransferEg />} /></>
+        )}
       </Routes>
     </div>
   );
