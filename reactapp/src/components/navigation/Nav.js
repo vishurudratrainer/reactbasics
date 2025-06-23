@@ -7,10 +7,12 @@ import { useState } from "react";
 import PrivateComponent from "../PrivateComponent";
 import Select from "../Select";
 import SelectWithContext from "../contextusage/SelectWithContext";
+import AuthContext from "../../context/AuthContext";
 
 const Nav = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
+    <AuthContext.Provider value={{isAuthenticated:isAuthenticated}}>
     <div>
       {isAuthenticated && (
         <div>
@@ -36,6 +38,7 @@ const Nav = () => {
         </Route>
       </Routes>
     </div>
+    </AuthContext.Provider>
   );
 };
 
