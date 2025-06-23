@@ -24,18 +24,25 @@ const Login = (props) => {
 
   const checkField = (data) => {
     let length = data.trim().length;
+    console.log(length);
     return length > 0;
   };
 
   const capture = (e) => {
     let propertyName = e.target.name;
     let propertyValue = e.target.value;
+    let touch = true;
+    if (propertyName === "username") {
+      touch = touch && propertyValue.trim().length > 0;
+      touch = touch && checkField(formData.password);
+    } else {
+      touch = touch && propertyValue.trim().length > 0;
+      touch = touch && checkField(formData.username);
+    }
+
     setFormData({
       ...formData,
-      [propertyName]: propertyValue,
-      touch:
-        checkField(formData.username) &&
-        checkField(formData.password),
+      [propertyName]: propertyValue,touch:touch
     });
   };
 
