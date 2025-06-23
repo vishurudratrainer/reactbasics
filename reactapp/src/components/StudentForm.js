@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Table1 from "./Table1";
+import GoLogin from "./login/GoLogin";
 
-export default function StudentForm() {
+export default function StudentForm(props) {
   const [studentId, setStudentId] = useState(0);
   const [name, setName] = useState("");
   const [student, setStudent] = useState([]);
@@ -11,7 +12,7 @@ export default function StudentForm() {
     e.preventDefault(); //this is done to stop the form from submitting
     setStudent(student.concat({ id: studentId, name: name }));
   };
-
+  if(props.isAuthenticated)
   return (
     <div>
       <form onSubmit={addStudent}>
@@ -29,4 +30,7 @@ export default function StudentForm() {
       <Table1 tableData={student} />
     </div>
   );
+  else {
+    return (<GoLogin/>)
+  }
 }

@@ -23,9 +23,9 @@ const Nav = () => {
           element={<Login setIsAuthenticated={setIsAuthenticated} />}
         />
 
-        <Route path="/studentform" element={<StudentForm />} />
-        <Route path="/calculator" element={<Calcultor />} />
-        <Route path="/transfer" element={<TransferEg />} />
+        <Route path="/studentform" element={<StudentForm isAuthenticated={isAuthenticated} />} />
+        <Route path="/calculator" element={<Calcultor isAuthenticated={isAuthenticated}/>} />
+        <Route path="/transfer" element={<TransferEg isAuthenticated={isAuthenticated} />} />
       </Routes>
     </div>
   );
