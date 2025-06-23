@@ -2,7 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
-  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    touch: false,
+  });
   const [error, setError] = useState(false);
   const navigate = useNavigate();
 
@@ -21,7 +25,11 @@ const Login = (props) => {
   const capture = (e) => {
     let propertyName = e.target.name;
     let propertyValue = e.target.value;
-    setFormData({ ...formData, [propertyName]: propertyValue });
+    setFormData({
+      ...formData,
+      [propertyName]: propertyValue,
+      touch: formData.username.length > 0 && formData.password.length > 0,
+    });
   };
 
   return (
@@ -36,9 +44,9 @@ const Login = (props) => {
           <input type="password" name="password" onChange={capture} />
         </label>
         <br />
-        <button>Login</button>
+        <button disabled={!formData.touch}>Login</button>
       </form>
-      {error ? <h1 style={{color:"red"}}>{error}</h1> : <></>}
+      {error ? <h1 style={{ color: "red" }}>{error}</h1> : <></>}
     </div>
   );
 };
