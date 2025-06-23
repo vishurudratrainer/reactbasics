@@ -34,8 +34,8 @@ const Login = (props) => {
       ...formData,
       [propertyName]: propertyValue,
       touch:
-        checkField(formData.username.length) &&
-        checkField(formData.password.length),
+        checkField(formData.username) &&
+        checkField(formData.password),
     });
   };
 

@@ -4,6 +4,7 @@ import StudentForm from "../StudentForm";
 import Calcultor from "../Calculator";
 import TransferEg from "../TransferEg";
 import { useState } from "react";
+import GoLogin from "../login/GoLogin";
 const Nav = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
@@ -22,6 +23,7 @@ const Nav = () => {
             <Route path="/calculator" element={<Calcultor />} />
             <Route path="/transfer" element={<TransferEg />} /></>
         )}
+        <Route path="*" element={<GoLogin/>}/>
       </Routes>
     </div>
   );
