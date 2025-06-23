@@ -10,7 +10,7 @@ const changeColor = (room,newColor)=>{
 }
 const changeColor1 = (room,newColor)=>{
   //  room.color =newColor
-  let copiedRoom = {...room,color:newColor,length:40}
+  let copiedRoom = {...room,color:newColor,length:40}//Spread operator
     return copiedRoom
 }
 
