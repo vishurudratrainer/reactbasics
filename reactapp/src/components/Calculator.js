@@ -1,5 +1,4 @@
 import { useState } from "react";
-import GoLogin from "./login/GoLogin";
 const Calcultor = (props) => {
   const [ip1, setIp1] = useState(0);
   const [ip2, setIp2] = useState(0);
@@ -12,7 +11,6 @@ const Calcultor = (props) => {
   const sub = () => setRes(parseInt(ip1) - parseInt(ip2));
   const mul = () => setRes(parseInt(ip1) * parseInt(ip2));
   const div = () => setRes(parseInt(ip1) / parseInt(ip2));
-  if(props.isAuthenticated)
   return (
     <div>
       <form onSubmit={doNothing}>
@@ -33,9 +31,7 @@ const Calcultor = (props) => {
       </form>
     </div>
   );
-  else{
-    return (<GoLogin/>)
-  }
+
 };
 
 export default Calcultor;

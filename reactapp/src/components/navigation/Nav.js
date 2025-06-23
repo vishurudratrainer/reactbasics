@@ -4,6 +4,7 @@ import StudentForm from "../StudentForm";
 import Calcultor from "../Calculator";
 import TransferEg from "../TransferEg";
 import { useState } from "react";
+import PrivateComponent from "../PrivateComponent";
 
 const Nav = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -22,10 +23,11 @@ const Nav = () => {
           path="/"
           element={<Login setIsAuthenticated={setIsAuthenticated} />}
         />
-
-        <Route path="/studentform" element={<StudentForm isAuthenticated={isAuthenticated} />} />
-        <Route path="/calculator" element={<Calcultor isAuthenticated={isAuthenticated}/>} />
-        <Route path="/transfer" element={<TransferEg isAuthenticated={isAuthenticated} />} />
+        <Route element={<PrivateComponent isAuthenticated={isAuthenticated} />}>
+          <Route path="/studentform" element={<StudentForm />} />
+          <Route path="/calculator" element={<Calcultor />} />
+          <Route path="/transfer" element={<TransferEg />} />
+        </Route>
       </Routes>
     </div>
   );
