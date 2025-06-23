@@ -22,10 +22,11 @@ export default function StudentForm() {
         <label>
           Enter ur name <input onChange={captureName} required />
         </label>
+        <br />
         <button> Add user</button>
         <br />
       </form>
-      <Table1 tableData={student}/>
+      <Table1 tableData={student} />
     </div>
   );
 }
