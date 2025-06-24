@@ -10,7 +10,16 @@ const TodosMiddleware =
             .then((data) => dispatch({ type: "FETCHED_TODO", data: data }));
         }, 5000);
       }
+
+      if (action.type === "FETCH_TODO_BY_ID") {
+        setTimeout(() => {
+          fetch("https://jsonplaceholder.typicode.com/todos/" + action.todoId)
+            .then((data) => data.json())
+            .then((data) => dispatch({ type: "FETCHED_TODO", data: [data] }));
+        }, 5000);
+      }
     }
+
     next(action); //next is basically used to forward this action to the enxt middleware/reducer
   };
 

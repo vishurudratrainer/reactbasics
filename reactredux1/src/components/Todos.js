@@ -4,13 +4,21 @@ export default function Todos() {
   const dispatch = useDispatch();
   const todosData = useSelector((state) => state.todos);
   const fetchTodo = () => dispatch({ type: "FETCH_TODO" });
+  const fetchTodoById = () => dispatch({ type: "FETCH_TODO_BY_ID",todoId:todosData.todoId });
+
+  const captureId = (e) =>
+    dispatch({ type: "CAPTURE_TODO_ID", todoId: e.target.value });
 
   return (
     <div>
-      {todosData.todos.loading && <h1>loading in progress</h1>}
-      {!todosData.todos.loading && <h1>Todos :{JSON.stringify(todosData)}</h1>}
+      <label>
+        Enter Todo Id <input onChange={captureId} />
+      </label>
+
+      {<h1>Todos :{JSON.stringify(todosData)}</h1>}
       <br />
       <button onClick={fetchTodo}>FETCH_TODO</button>
+      <button onClick={fetchTodoById}>FETCH_TODO_BY_ID</button>
     </div>
   );
 }
