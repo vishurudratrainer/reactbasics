@@ -6,8 +6,8 @@ const FetchTodo = () => {
 
   const fetchTodo = () => {
     fetch("https://jsonplaceholder.typicode.com/todos/")
-      .then((res) => res.json())
-      .then((data) => setTodo(data));
+      .then(res => res.json())
+      .then(data => setTodo(data));
   };
 
   return (
