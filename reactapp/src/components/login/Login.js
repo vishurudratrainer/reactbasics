@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = (props) => {
   const [formData, setFormData] = useState({
@@ -12,14 +13,29 @@ const Login = (props) => {
 
   const doLogin = (e) => {
     e.preventDefault();
-    if (formData.username !== "" && formData.username === formData.password) {
-      props.setIsAuthenticated(true);
-      navigate("/calculator");
-    } else {
-      setError(
-        "Login is not successfull. Please check ur username and password"
+
+    axios
+      .post(
+        "https://reqres.in/api/login",
+        { email: formData.username, password: formData.password },
+        {
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            "x-api-key": "reqres-free-v1",
+          },
+        }
+      )
+      .then((res) => {
+        if (res.data.token) {
+          props.setIsAuthenticated(true);
+          navigate("/calculator");
+        }
+      })
+      .catch((error) =>
+        setError(
+          "Login is not successfull. Please check ur username and password"
+        )
       );
-    }
   };
 
   const checkField = (data) => {
@@ -42,7 +58,8 @@ const Login = (props) => {
 
     setFormData({
       ...formData,
-      [propertyName]: propertyValue,touch:touch
+      [propertyName]: propertyValue,
+      touch: touch,
     });
   };
 
@@ -50,12 +67,18 @@ const Login = (props) => {
     <div>
       <form onSubmit={doLogin}>
         <label>
-          Enter username <input name="username" onChange={capture} minLength={2}/>
+          Enter username{" "}
+          <input name="username" onChange={capture} minLength={2} />
         </label>
         <br />
         <label>
           Enter password{" "}
-          <input type="password" name="password" onChange={capture} minLength={2} />
+          <input
+            type="password"
+            name="password"
+            onChange={capture}
+            minLength={2}
+          />
         </label>
         <br />
         <button disabled={!formData.touch}>Login</button>
