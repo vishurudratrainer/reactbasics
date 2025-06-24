@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import RestInstance from "../rest/instance/RestInstance";
 const Login = (props) => {
   const [formData, setFormData] = useState({
     username: "",
@@ -13,17 +13,17 @@ const Login = (props) => {
 
   const doLogin = (e) => {
     e.preventDefault();
-
-    axios
-      .post(
-        "https://reqres.in/api/login",
+    RestInstance.post("/login",
+   // axios
+     // .post(
+      //  "https://reqres.in/api/login",
         { email: formData.username, password: formData.password },
-        {
+       /**  {
           headers: {
             "Content-type": "application/json; charset=UTF-8",
             "x-api-key": "reqres-free-v1",
           },
-        }
+        }**/
       )
       .then((res) => {
         if (res.data.token) {
