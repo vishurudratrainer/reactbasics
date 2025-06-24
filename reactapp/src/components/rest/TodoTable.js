@@ -1,5 +1,8 @@
 const TodoTable = ({ tableData }) => {
   if (tableData) {
+    if (!Array.isArray(tableData)) {
+      return <div>No data</div>;
+    }
     if (tableData.length === 0) {
       return <div>No data</div>;
     } else {
@@ -19,7 +22,7 @@ const TodoTable = ({ tableData }) => {
                 <td>{row.id}</td>
                 <td>{row.userId}</td>
                 <td>{row.title}</td>
-                <td>{row.completed.toString()}</td>
+                <td>{row?.completed?.toString()}</td>
               </tr>
             ))}
           </tbody>

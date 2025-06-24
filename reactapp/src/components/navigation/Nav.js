@@ -9,6 +9,7 @@ import Select from "../Select";
 import SelectWithContext from "../contextusage/SelectWithContext";
 import AuthContext from "../../context/AuthContext";
 import FetchTodo from "../rest/FetchTodo";
+import FetchTodoId from "../rest/FetchTodoId";
 
 const Nav = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -24,6 +25,7 @@ const Nav = () => {
             <Link to={"propertydrill"}>Property drill</Link> <br />
             <Link to={"withcontext"}>Select With context</Link> <br />
             <Link to={"fetchtodo"}>Fetch todo</Link> <br />
+            <Link to={"fetchtodoid"}>Fetch todo id</Link> <br />
           </div>
         )}
         <Routes>
@@ -40,6 +42,7 @@ const Nav = () => {
             <Route path="/propertydrill" element={<Select />} />
             <Route path="/withcontext" element={<SelectWithContext />} />
             <Route path="/fetchtodo" element={<FetchTodo />} />
+            <Route path="fetchtodoid" element={<FetchTodoId />} />
           </Route>
         </Routes>
       </div>
