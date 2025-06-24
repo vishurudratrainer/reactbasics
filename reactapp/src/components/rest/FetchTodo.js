@@ -13,7 +13,7 @@ const FetchTodo = () => {
   return (
     <div>
       <button onClick={fetchTodo}>FETCH TODO</button>
-      <TodoTable tableData={todo}/>
+      <TodoTable error={{error:null}} tableData={todo}/>
     </div>
   );
 };

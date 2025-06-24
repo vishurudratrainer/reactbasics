@@ -1,4 +1,7 @@
-const TodoTable = ({ tableData }) => {
+const TodoTable = ({ tableData ,error}) => {
+    if(error.error!=null){
+        return <div style={{color:"red"}}>{JSON.stringify(error)}</div>
+    }
   if (tableData) {
     if (!Array.isArray(tableData)) {
       return <div>No data</div>;

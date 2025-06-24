@@ -2,11 +2,17 @@ import { useState } from "react";
 import TodoTable from "./TodoTable";
 
 export default function FetchTodoId() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState({});
+  const [error,setError] =useState({error:null})
   const captureTodoId = (e) => {
     fetch("https://jsonplaceholder.typicode.com/todos/" + e.target.value)
       .then((res) => res.json())
-      .then((data) => setTodos([data]));
+      .then((data) => {
+        setTodos([data])
+        setError({error:null})
+  })
+      .catch(e=>setError({error:e}))
+
   };
 
   return (
@@ -14,7 +20,7 @@ export default function FetchTodoId() {
       <label>
         Enter id to fetch <input onChange={captureTodoId} />
       </label>
-      <TodoTable tableData={todos}/>
+      <TodoTable error={error} tableData={todos}/>
     </div>
   );
 }
