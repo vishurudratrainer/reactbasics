@@ -7,16 +7,24 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Alert from "@mui/material/Alert";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Country = () => {
   const [countries, setCountries] = useState([]);
+  const [load, setLoad] = useState(false);
   const [country, setCountry] = useState("");
   useEffect(() => {
-    axios
-      .get(
-        "https://raw.githubusercontent.com/samayo/country-json/refs/heads/master/src/country-by-abbreviation.json"
-      )
-      .then((data) => setCountries(data.data));
+    setLoad(true);
+    setTimeout(() => {
+      axios
+        .get(
+          "https://raw.githubusercontent.com/samayo/country-json/refs/heads/master/src/country-by-abbreviation.json"
+        )
+        .then((data) => {
+          setLoad(false);
+          setCountries(data.data);
+        });
+    }, 5000);
   }, []);
 
   const handleChange = (e) => setCountry(e.target.value);
@@ -24,6 +32,8 @@ const Country = () => {
   return (
     <div>
       <Box sx={{ minWidth: 120 }}>
+        {load && <CircularProgress size="3rem" />}
+
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Select Country</InputLabel>
           <Select
