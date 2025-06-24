@@ -11,6 +11,7 @@ import AuthContext from "../../context/AuthContext";
 import FetchTodo from "../rest/FetchTodo";
 import FetchTodoId from "../rest/FetchTodoId";
 import FetchPostCreate from "../rest/FetchPostCreate";
+import FetchPostUncontrolled from "../rest/FetchPostUncontrolled";
 
 const Nav = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -28,6 +29,7 @@ const Nav = () => {
             <Link to={"fetchtodo"}>Fetch todo</Link> <br />
             <Link to={"fetchtodoid"}>Fetch todo id</Link> <br />
             <Link to={"fetchpostcreate"}>Fetch Post Create</Link> <br />
+            <Link to={"uncontrolled"}>Uncontrolled</Link> <br />
           </div>
         )}
         <Routes>
@@ -46,7 +48,7 @@ const Nav = () => {
             <Route path="/fetchtodo" element={<FetchTodo />} />
             <Route path="fetchtodoid" element={<FetchTodoId />} />
             <Route path="fetchpostcreate" element={<FetchPostCreate />} />
-
+            <Route path="uncontrolled" element={<FetchPostUncontrolled />} />
           </Route>
         </Routes>
       </div>
