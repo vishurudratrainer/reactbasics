@@ -15,8 +15,10 @@ export default function Todos() {
       .then((data) => setTodos(data));
   };
 
-    const handleClickById = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    fetch("https://jsonplaceholder.typicode.com/todos/"+todoId)
+  const handleClickById = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    fetch("https://jsonplaceholder.typicode.com/todos/" + todoId)
       .then((data) => data.json())
       .then((data) => setTodos([data]));
   };
@@ -29,7 +31,8 @@ export default function Todos() {
       <label>
         Enter input <input onChange={handleChange} />
       </label>
-      <button onClick={handleClickById}>FETCH TODO BY ID</button><br/>
+      <button onClick={handleClickById}>FETCH TODO BY ID</button>
+      <br />
 
       <button onClick={handleClick}>FETCH TODO</button>
       <table border={1}>
