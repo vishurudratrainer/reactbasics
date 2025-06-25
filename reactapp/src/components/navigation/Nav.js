@@ -14,6 +14,7 @@ import FetchPostCreate from "../rest/FetchPostCreate";
 import FetchPostUncontrolled from "../rest/FetchPostUncontrolled";
 import AxiosTodo from "../rest/AxiosTodo";
 import AxiosPostUnControlled from "../rest/AxiosPostUnControlled";
+import TodosWithReducer from "../reducer/TodosWithReducer";
 
 const Nav = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -34,6 +35,7 @@ const Nav = () => {
             <Link to={"uncontrolled"}>Uncontrolled</Link> <br />
             <Link to={"axiostodo"}>Axios Todo</Link> <br />
             <Link to={"axiospost"}>Axios Post</Link> <br />
+            <Link to={"todoswithreducer"}>Todos </Link> <br />
           </div>
         )}
         <Routes>
@@ -55,6 +57,7 @@ const Nav = () => {
             <Route path="uncontrolled" element={<FetchPostUncontrolled />} />
             <Route path="axiostodo" element={<AxiosTodo />} />
             <Route path="axiospost" element={<AxiosPostUnControlled />} />
+            <Route path="todoswithreducer" element={<TodosWithReducer />} />
           </Route>
         </Routes>
       </div>
