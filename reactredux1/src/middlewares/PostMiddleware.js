@@ -3,7 +3,7 @@ const PostMiddleware =
   (next) =>
   (action) => {
     if (action) {
-      if (action.type === "SAVE_POST_DATA") {
+      if (action.type === "SAVE_POST_DATA") {//We can calling post method with formData from action to save
         setTimeout(() => {
           fetch("https://jsonplaceholder.typicode.com/posts", {
             method: "POST",

@@ -4,6 +4,8 @@ export default function PostCreate() {
   const dispatch = useDispatch();
   const postData = useSelector((state) => state);
   const capture = (e) => {
+    //In this method we are capturing input fields which are changing
+    //Same is passed as formData in action
     let propertyName = e.target.name;
     let propertyValue = e.target.value;
     dispatch({
@@ -13,6 +15,7 @@ export default function PostCreate() {
   };
 
   const sendData = (e) => {
+    //When save data is called we pass the data saved in state wiith name formData
     e.preventDefault();
     dispatch({ type: "SAVE_POST_DATA", formData: postData.post.formData });
   };
