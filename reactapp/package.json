@@ -27,6 +27,11 @@
       "react-app/jest"
     ]
   },
+   "jest": {
+            "moduleNameMapper": {
+              "^react-router-dom$": "C:/reactbasics/reactbasics/reactapp/node_modules/react-router-dom"
+            }
+          },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -38,5 +43,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+   
   }
 }
