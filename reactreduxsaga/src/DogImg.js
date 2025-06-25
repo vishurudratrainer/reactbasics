@@ -9,6 +9,7 @@ export default function DogImg() {
     <div>
       <button onClick={fetchDog}>Fetch Dog Image</button>
       <br />
+      <h1>{JSON.stringify(dogData)}</h1>
       <img src={dogData.message} alt="unable to download" />
     </div>
   );
