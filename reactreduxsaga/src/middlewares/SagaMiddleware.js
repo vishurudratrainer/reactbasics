@@ -4,6 +4,8 @@ import { takeLatest, call, put } from "redux-saga/effects";
 export function* watcherSaga() {
   yield takeLatest("FETCH_DOG", dogFetcherSaga); //Look up is done on action.type
   yield takeLatest("FETCH_TODO", todoFetcherSaga);
+  yield takeLatest("FETCH_TODO_BY_ID", todoByIdFetcherSaga);
+
   //takeLatest means take the latest request
 }
 
@@ -13,10 +15,8 @@ function callDogApi() {
   );
 }
 
-function callTodoApi() {
-  return fetch("https://jsonplaceholder.typicode.com/todos/").then((data) =>
-    data.json()
-  );
+function callTodoApi(url) {
+  return fetch(url).then((data) => data.json());
 }
 
 function* dogFetcherSaga() {
@@ -25,7 +25,18 @@ function* dogFetcherSaga() {
   yield put({ type: "DOG_FETCHED", data: data }); //this is equivalent of dispatch function
 }
 function* todoFetcherSaga() {
-  let data = yield call(callTodoApi);
+  let data = yield call(
+    callTodoApi,
+    "https://jsonplaceholder.typicode.com/todos/"
+  );
+  yield put({ type: "TODOS_FETCHED", data: data });
+}
+
+function* todoByIdFetcherSaga(action) {
+  let data = yield call(
+    callTodoApi,
+    "https://jsonplaceholder.typicode.com/todos/" + action.todoId
+  );
   yield put({ type: "TODOS_FETCHED", data: data });
 }
 
