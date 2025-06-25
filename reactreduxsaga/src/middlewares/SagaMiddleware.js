@@ -5,6 +5,7 @@ export function* watcherSaga() {
   yield takeLatest("FETCH_DOG", dogFetcherSaga); //Look up is done on action.type
   yield takeLatest("FETCH_TODO", todoFetcherSaga);
   yield takeLatest("FETCH_TODO_BY_ID", todoByIdFetcherSaga);
+  yield takeLatest("SAVE_POST_DATA", savePostDataSaga);
 
   //takeLatest means take the latest request
 }
@@ -17,6 +18,16 @@ function callDogApi() {
 
 function callTodoApi(url) {
   return fetch(url).then((data) => data.json());
+}
+
+function callPostApi(url, data) {
+  return fetch(url, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  }).then((response) => response.json());
 }
 
 function* dogFetcherSaga() {
@@ -38,6 +49,14 @@ function* todoByIdFetcherSaga(action) {
     "https://jsonplaceholder.typicode.com/todos/" + action.todoId
   );
   yield put({ type: "TODOS_FETCHED", data: data });
+}
+
+function* savePostDataSaga(action) {
+  let data = yield call(
+    callPostApi,
+    "https://jsonplaceholder.typicode.com/posts/" ,action.formData
+  );
+  yield put({ type: "SAVED_POST_DATA", result: data });
 }
 
 // funct
