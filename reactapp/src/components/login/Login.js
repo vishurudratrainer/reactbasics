@@ -68,7 +68,7 @@ const Login = (props) => {
       <form onSubmit={doLogin}>
         <label>
           Enter username{" "}
-          <input name="username" onChange={capture} minLength={2} />
+          <input name="username" id="username" onChange={capture} minLength={2} />
         </label>
         <br />
         <label>
@@ -76,12 +76,13 @@ const Login = (props) => {
           <input
             type="password"
             name="password"
+            id="password"
             onChange={capture}
             minLength={2}
           />
         </label>
         <br />
-        <button disabled={!formData.touch}>Login</button>
+        <button id="login" disabled={!formData.touch}>Login</button>
       </form>
       {error ? <h1 style={{ color: "red" }}>{error}</h1> : <></>}
     </div>
