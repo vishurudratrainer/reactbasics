@@ -1,3 +1,4 @@
+import { FETCH_DOG,DOG_FETCHED } from "../Actions";
 export default function DogReducer(
   state = { message: null, status: null ,loading:false},
   action
@@ -5,10 +6,10 @@ export default function DogReducer(
   if (action) {
     console.log(action)
 
-    if(action.type ==="FETCH_DOG"){
+    if(action.type ===FETCH_DOG){
         return {...state,loading:true}
     }
-    if (action.type === "DOG_FETCHED") {
+    if (action.type === DOG_FETCHED) {
       return { ...state, message: action.data.message, status: action.data.status,loading:false };
     }
   }

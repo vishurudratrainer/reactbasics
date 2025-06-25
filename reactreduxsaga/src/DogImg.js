@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-
+import { FETCH_DOG } from "./Actions";
 export default function DogImg() {
   const dispatch = useDispatch();
   const dogData = useSelector((state) => state.dog);
-  const fetchDog = () => dispatch({ type: "FETCH_DOG" });
+  const fetchDog = () => dispatch({ type: FETCH_DOG });
 
   return (
     <div>

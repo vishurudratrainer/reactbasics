@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-
+import { POST_DATA_CAPTURE,SAVE_POST_DATA } from "./Actions";
 export default function PostCreate() {
   const dispatch = useDispatch();
   const postData = useSelector((state) => state);
@@ -9,7 +9,7 @@ export default function PostCreate() {
     let propertyName = e.target.name;
     let propertyValue = e.target.value;
     dispatch({
-      type: "POST_DATA_CAPTURE",
+      type: POST_DATA_CAPTURE,
       formData: { [propertyName]: propertyValue },
     });
   };
@@ -17,7 +17,7 @@ export default function PostCreate() {
   const sendData = (e) => {
     //When save data is called we pass the data saved in state wiith name formData
     e.preventDefault();
-    dispatch({ type: "SAVE_POST_DATA", formData: postData.post.formData });
+    dispatch({ type: SAVE_POST_DATA, formData: postData.post.formData });
   };
   return (
     <div>
